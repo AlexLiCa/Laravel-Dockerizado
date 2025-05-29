@@ -42,6 +42,39 @@ Permitir una forma sencilla y reproducible de levantar entornos de desarrollo pa
 4. **Accede a la aplicación**
    Luego de crear el proyecto, Laravel estará disponible en `http://localhost` (o el puerto definido en `docker-compose.yaml`).
 
+## Configuración de MySQL
+
+Para configurar la conexión a la base de datos MySQL, edita el archivo `mysql.env` dentro del directorio `src`. Modifica las siguientes variables:
+
+```
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel
+DB_USERNAME=root
+DB_PASSWORD=secret
+```
+
+Asegúrate de que los valores de `DB_USERNAME` y `DB_PASSWORD` coincidan con los definidos en el archivo `env/mysql.env`.
+
+## Comandos de Artisan
+
+Para ejecutar comandos de Artisan, utiliza el siguiente comando:
+
+```bash
+docker compose run --rm artisan [comando]
+```
+
+Reemplaza `[comando]` con el comando de Artisan que deseas ejecutar (ej. `migrate`, `make:controller`, etc.).
+
+## Comandos de npm
+
+Para ejecutar comandos de npm, primero debes acceder al contenedor `php` o `app` (si tienes uno definido) y luego ejecutar los comandos de npm. Por ejemplo:
+
+```bash
+docker compose run --rm npm install
+```
+
 ## Notas
 
 * Asegúrate de tener Docker y Docker Compose instalados.
